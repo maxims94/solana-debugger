@@ -13,7 +13,9 @@
         <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="org.jetbrains.plugins.template.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Debugger" secondary="false" icon="AllIcons.Toolwindows.WebToolWindow" anchor="bottom"
+                    factoryClass="com.solana.debugger.toolWindow.DebuggerToolWindowFactory"/>
+    </extensions>
+
 </idea-plugin>
