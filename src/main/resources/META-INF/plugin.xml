@@ -4,6 +4,7 @@
     <name>Solana Debugger</name>
     <vendor>Solana</vendor>
 
+    <depends>com.jetbrains.rust</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
