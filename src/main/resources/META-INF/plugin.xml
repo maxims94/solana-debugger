@@ -14,7 +14,7 @@
     </extensions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="Debugger" secondary="false" icon="AllIcons.Toolwindows.WebToolWindow" anchor="bottom"
+        <toolWindow id="Solana Debugger" secondary="false" anchor="bottom" icon="/toolWindow/icon.svg"
                     factoryClass="com.solana.debugger.toolWindow.DebuggerToolWindowFactory"/>
     </extensions>
 
