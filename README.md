@@ -57,12 +57,12 @@ In case this doesn't work, download the respective Ubuntu 20.04 package manually
 
 Here is an example in case `libncurses` and `libpanel` are missing:
 
-- Download it from here: [https://packages.ubuntu.com/focal/libncurses6]
+- Download it from here: https://packages.ubuntu.com/focal/libncurses6
 - Extract the archive with `ar vx DEB_PACKAGE` and `tar xf data.tar.gz`
-- Copy the library files to `/usr/local/lib/libncurses6`:
+- Copy the library files to `/usr/local/lib`:
 ```
-# cp -P /lib/*/* /usr/lib/*/* /usr/local/lib/libncurses6
+# cp -P PACKAGE/lib/*/* PACKAGE/usr/lib/*/* /usr/local/lib
 ```
-- Make sure that `/usr/local/lib/libncurses6` is part of your `LD_LIBRARY_PATH`
+- Make sure that `/usr/local/lib` is part of your `LD_LIBRARY_PATH`
 - Run `ldd solana-lldb` to verify that the shared libraries are found
 - Now, `./solana-lldb` should work!
