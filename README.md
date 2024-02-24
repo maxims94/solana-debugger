@@ -40,9 +40,9 @@ This is what it should look like:
 
 ## Troubleshooting
 
-### Missing shared libraries for `solana-lldb`
+### Linux: Missing shared libraries for `solana-lldb`
 
-When trying to run `solana-lldb`, it may report missing libraries. Note that `solana-lldb` has been compiled against Ubuntu 20.04 libraries. So, it may be that some of them are not available on your system.
+When trying to run `solana-lldb`, it may report missing libraries. Note that the `solana-lldb` Linux binary has been compiled against Ubuntu 20.04 libraries. So, it may be that some of them are not available on your system.
 
 The preferred solution is to install them through your package manager.
 
@@ -53,7 +53,7 @@ sudo apt-get update
 sudo apt-get install python3.8-dev
 ```
 
-In case this doesn't work, download the respective Ubuntu 20.04 package manually. Then, extract the library files to a directory where they can be found.
+If this doesn't work, download the respective Ubuntu 20.04 package manually. Then, extract the library files to a directory where they can be found.
 
 Here is an example in case `libncurses` and `libpanel` are missing:
 
