@@ -1,7 +1,7 @@
 # Solana Debugger
 
 <!-- Plugin description -->
-A RustRover plugin that allows you to debug Solana Programs.
+This RustRover plugin is a graphical debugger for Solana Programs.
 <!-- Plugin description end -->
 
 ## Features
@@ -12,7 +12,7 @@ This includes common debugger features such as displaying and navigating the cal
 
 It will also have Solana-specific features: There will be a dedicated UI to configure a program's input (program id, accounts, instruction data). Also, it will be possible to pre-load the ledger with a custom state (accounts and programs) before executing the program.
 
-Possible use cases are fixing difficult bugs, ensuring correct execution and learning Solana program development.
+Possible use cases are fixing hard bugs, ensuring correct execution and learning development on Solana.
 
 ## Screenshot
 
@@ -28,9 +28,9 @@ Tested with:
 
 Install Rust via rustup as described [here](https://www.rust-lang.org/tools/install).
 
-Install the Solana Tool Suite as described in the [official documentation](https://docs.solanalabs.com/cli/install). Don't forget to update your PATH!
+Install the Solana Tool Suite as described in the [official documentation](https://docs.solanalabs.com/cli/install).
 
-Make sure Solana's `platform-tools` is downloaded:
+Trigger the installation of Solana's `platform-tools` (if not yet installed):
 ```
 $ cd ~
 $ cargo new myproject
@@ -45,7 +45,7 @@ Verify that `solana-lldb` runs on your system:
 $ cd ~/.local/share/solana/install/active_release/bin/sdk/sbf/dependencies/platform-tools/llvm/bin
 $ ./solana-lldb
 ```
-This should start a new debugger session. Otherwise, additional steps are required. See [Troubleshooting](#troubleshooting).
+This should start a new debugger session. If it doesn't work, additional steps are required. See [Troubleshooting](#troubleshooting).
 
 ## Installation (Ubuntu)
 
@@ -57,9 +57,9 @@ Tested with:
 
 Install Rust via rustup as described [here](https://www.rust-lang.org/tools/install).
 
-Install the Solana Tool Suite as described in the [official documentation](https://docs.solanalabs.com/cli/install). Don't forget to update your PATH!
+Install the Solana Tool Suite as described in the [official documentation](https://docs.solanalabs.com/cli/install).
 
-Make sure Solana's `platform-tools` is downloaded:
+Trigger the installation of Solana's `platform-tools` (if not yet installed):
 ```
 $ cd ~
 $ cargo new myproject
@@ -81,7 +81,7 @@ Verify that `solana-lldb` runs on your system:
 $ cd ~/.local/share/solana/install/active_release/bin/sdk/sbf/dependencies/platform-tools/llvm/bin
 $ ./solana-lldb
 ```
-This should start a new debugger session. Otherwise, additional steps are required. See [Troubleshooting](#troubleshooting).
+This should start a new debugger session. If it doesn't work, additional steps are required. See [Troubleshooting](#troubleshooting).
 
 ## RustRover + Plugin installation
 
@@ -89,17 +89,17 @@ Install [RustRover](https://www.jetbrains.com/rust/nextversion/). The version sh
 
 Download `Solana.Debugger-0.1.1.zip` from [Releases](https://github.com/maxims94/solana-debugger/releases/tag/v0.1.1).
 
-Download the newest ZIP-archive of the plugin from the [Releases](https://github.com/maxims94/solana-debugger/releases/tag/v0.1.1) page.
-
 To install the plugin in RustRover:
 
 - Click on the gear icon in the top right
-- Select "Plugins"
-- Click on the gear icon in the top center
+- Select "Plugins" to open the Plugins window
+- In this window, click on the gear icon in the middle of the top bar
 - Select "Install Plugin from Disk"
-- Select the ZIP-archive
+- Select the ZIP archive
+- Confirm the dialog
+- Click on "OK" in the Plugins window
 
-After doing this, an additional tab or icon (the Solana Logo) should appear in the bottom left. Clicking on it should open a tool window and allow you to run `solana-lldb`.
+Now, an additional tab or icon (the Solana Logo) should appear in the bottom left. Clicking on it should open a tool window and allow you to run `solana-lldb` within RustRover (see screenshot above).
 
 ## Troubleshooting
 
