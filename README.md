@@ -4,23 +4,90 @@
 A RustRover plugin that allows you to debug Solana Programs.
 <!-- Plugin description end -->
 
-## Installation
+## Features
 
-### Prepare the environment
+In the future, this plugin will allow you to debug Solana programs as though they are regular programs.
 
-Install [RustRover](https://www.jetbrains.com/rust/nextversion/). The version should be at least 2023.3. Run `RUSTROVER_DIR/bin/rustrover.sh` to verify that it works.
+This includes common debugger features such as displaying and navigating the call stack, evaluating expressions, controlling execution (step in, over and out of subroutines) and variable inspection. All of this will be seamlessly integrated into the RustRover IDE.
+
+It will also have Solana-specific features: There will be a dedicated UI to configure a program's input (program id, accounts, instruction data). Also, it will be possible to pre-load the ledger with a custom state (accounts and programs) before executing the program.
+
+Possible use cases are fixing difficult bugs, ensuring correct execution and learning Solana program development.
+
+## Screenshot
+
+![Screenshot](/docs/screenshot.png)
+
+## Installation (macOS)
+
+Tested with:
+* macOS Sonoma 14.4
+* Solana v1.18.2 (platform-tools v1.39)
+* RustRover 2023.3 EAP (Build #RR-233.14015.155)
+* Solana Debugger v0.1.1
 
 Install Rust via rustup as described [here](https://www.rust-lang.org/tools/install).
 
 Install the Solana Tool Suite as described in the [official documentation](https://docs.solanalabs.com/cli/install). Don't forget to update your PATH!
 
+Make sure Solana's `platform-tools` is downloaded:
+```
+$ cd ~
+$ cargo new myproject
+$ cd myproject
+$ cargo-build-sbf # This will download and install platform-tools
+$ cd ..
+$ rm -rf myproject
+```
+
+Verify that `solana-lldb` runs on your system:
+```
+$ cd ~/.local/share/solana/install/active_release/bin/sdk/sbf/dependencies/platform-tools/llvm/bin
+$ ./solana-lldb
+```
+This should start a new debugger session. Otherwise, additional steps are required. See [Troubleshooting](#troubleshooting).
+
+## Installation (Ubuntu)
+
+Tested with:
+* Ubuntu 22.04 LTS
+* Solana v1.18.2 (platform-tools v1.39)
+* RustRover 2023.3 EAP (Build #RR-233.14015.155)
+* Solana Debugger v0.1.1
+
+Install Rust via rustup as described [here](https://www.rust-lang.org/tools/install).
+
+Install the Solana Tool Suite as described in the [official documentation](https://docs.solanalabs.com/cli/install). Don't forget to update your PATH!
+
+Make sure Solana's `platform-tools` is downloaded:
+```
+$ cd ~
+$ cargo new myproject
+$ cd myproject
+$ cargo-build-sbf # This will download and install platform-tools
+$ cd ..
+$ rm -rf myproject
+```
+
+Install python3.8:
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3.8-dev
+```
+
+Verify that `solana-lldb` runs on your system:
+```
+$ cd ~/.local/share/solana/install/active_release/bin/sdk/sbf/dependencies/platform-tools/llvm/bin
+$ ./solana-lldb
+```
+This should start a new debugger session. Otherwise, additional steps are required. See [Troubleshooting](#troubleshooting).
+
+## RustRover + Plugin installation
+
+Install [RustRover](https://www.jetbrains.com/rust/nextversion/). The version should be at least 2023.3. Run `RUSTROVER_DIR/bin/rustrover.sh` to verify that it works.
+
 Download `Solana.Debugger-0.1.1.zip` from [Releases](https://github.com/maxims94/solana-debugger/releases/tag/v0.1.1).
-
-We need to trigger the download of Solana's `platform-tools` -- since it includes the debugger client our plugin will use. To do this, first create a new Cargo project like this: `cargo new myproject`. Then `cd` into it and run `cargo-build-sbf`. This will download and install `platform-tools`. You can now remove the Cargo project: `rm -rf myproject`
-
-The next step is to verify that `solana-lldb` (the debugger client) works: Go to `~/.local/share/solana/install/active_release/bin/sdk/sbf/dependencies/platform-tools/llvm/bin`. Now, run `./solana-lldb`. If it starts, you can proceed to the next step. If not, you are probably missing some shared libraries. See the [Troubleshooting](#troubleshooting) section for more information.
-
-### Plugin installation
 
 Download the newest ZIP-archive of the plugin from the [Releases](https://github.com/maxims94/solana-debugger/releases/tag/v0.1.1) page.
 
@@ -34,10 +101,6 @@ To install the plugin in RustRover:
 
 After doing this, an additional tab or icon (the Solana Logo) should appear in the bottom left. Clicking on it should open a tool window and allow you to run `solana-lldb`.
 
-This is what it should look like:
-
-![Screenshot](/docs/screenshot.png)
-
 ## Troubleshooting
 
 ### Linux: Missing shared libraries for `solana-lldb`
@@ -46,14 +109,7 @@ When trying to run `solana-lldb`, it may report missing libraries. Note that the
 
 The preferred solution is to install them through your package manager.
 
-For example, to make it run on Ubuntu 22.04, I needed to install python3.8:
-```
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt-get update
-sudo apt-get install python3.8-dev
-```
-
-If this doesn't work, download the respective Ubuntu 20.04 package manually. Then, extract the library files to a directory where they can be found.
+If this doesn't work, you need to download and install the respective Ubuntu 20.04 libraries manually.
 
 Here is an example in case `libncurses` and `libpanel` are missing:
 
